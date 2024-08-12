@@ -2,6 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "22.1.0",
+    "npm": "10.7.0"
+  },
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
