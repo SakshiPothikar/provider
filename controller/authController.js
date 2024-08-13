@@ -212,6 +212,10 @@ exports.registerServiceProvider = asyncHandler(async (req, res) => {
                 })
             }
         } else {
+            await Serviceprovider.create({
+                ...req.body,
+                password: hash
+            })
             res.json({ message: "ok without video" })
         }
 
