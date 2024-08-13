@@ -212,6 +212,7 @@ exports.registerServiceProvider = asyncHandler(async (req, res) => {
                 })
             }
         } else {
+            const hash = await bcrypt.hash(password, 10)
             await Serviceprovider.create({
                 ...req.body,
                 password: hash
