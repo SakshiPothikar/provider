@@ -142,9 +142,9 @@ exports.registerServiceProvider = asyncHandler(async (req, res) => {
             return res.status(400).json({ message: "error" })
         }
         const { name, email, password, mobile, category, jobProfile } = req.body
-        // console.log(req.body)
+        console.log(req.body)
         // console.log(req.file)
-        // console.log(req.files)
+        console.log(req.files)
         const { isError, error } = checkEmpty({ name, email, password, mobile, category, jobProfile })
         if (isError) {
             return res.status(400).json({ message: "All Feilds Required", error })
