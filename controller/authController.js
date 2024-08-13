@@ -194,22 +194,27 @@ exports.registerServiceProvider = asyncHandler(async (req, res) => {
             const result = await cloudinary.uploader.upload(item.path)
             x.push(result.secure_url)
         }
-        for (const item of videoData) {
-            cloudinary.uploader.upload_large(item.path, { resource_type: "video" }, async (err, result) => {
-                if (err) {
-                    console.log(err);
-                    return res.status(400).json({ message: "ERROR" })
-                }
-                const hash = await bcrypt.hash(password, 10)
-                await Serviceprovider.create({
-                    ...req.body,
-                    password: hash,
-                    image: x,
-                    video: result.secure_url
+        if (videoData.length > 0) {
+            for (const item of videoData) {
+                cloudinary.uploader.upload_large(item.path, { resource_type: "video" }, async (err, result) => {
+                    if (err) {
+                        console.log(err);
+                        return res.status(400).json({ message: "ERROR" })
+                    }
+                    const hash = await bcrypt.hash(password, 10)
+                    await Serviceprovider.create({
+                        ...req.body,
+                        password: hash,
+                        image: x,
+                        video: result.secure_url
+                    })
+                    res.json({ message: "OK" })
                 })
-                res.json({ message: "OK" })
-            })
+            }
+        } else {
+            res.json({ message: "ok without video" })
         }
+
         // console.log(x);
         // console.log(videoData);
 
