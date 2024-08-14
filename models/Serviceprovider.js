@@ -18,12 +18,12 @@ const serviceProviderSchema = new mongoose.Schema({
         required: true
     },
     category: {
-        type: mongoose.Types.ObjectId,
-        ref: "category"
+        type: String,
+        required: true
     },
     jobProfile: {
-        type: mongoose.Types.ObjectId,
-        ref: "jobProfile"
+        type: String,
+        required: true
     },
     image: {
         type: [String],
