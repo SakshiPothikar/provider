@@ -18,6 +18,7 @@ app.use("/api/auth", require("./routes/authRoute"))
 app.use("/api/admin", adminProtected, require("./routes/adminRoute"))
 app.use("/api/service-provider", seriveProviderProtected, require("./routes/serviceProviderRoutes"))
 app.use("/api/master-admin", masterAdminProtected, require("./routes/masterAdminRoute"))
+app.use("/api/public", require("./routes/publicRoute"))
 
 app.use("*", (req, res) => {
     res.status(404).json({ message: "Resource Not Found 404" })
