@@ -3,8 +3,8 @@ const serviceProviderController = require('../controller/serviceProviderControll
 const router = require('express').Router();
 
 router
-    .get("/service-provider",serviceProviderController.getAllServiceProvider )
-    .put("/update-service-provider", serviceProviderController.updateProfile)
-    .put("/deleted-service-provider", serviceProviderController.deleteServiceProvider)
+    .get("/service-provider", serviceProviderController.getAllServiceProvider)
+    .put("/update-service-provider/:id", serviceProviderController.updateProfile)
+    .delete("/deleted-service-provider/:id", serviceProviderController.deleteServiceProvider)
 
 module.exports = router

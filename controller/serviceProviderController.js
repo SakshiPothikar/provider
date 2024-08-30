@@ -32,6 +32,6 @@ exports.deleteServiceProvider = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: "All Feilds Required", error })
     }
 
-    await Serviceprovider.findByIdAndUpdate(id, { deleted: true })
+    await Serviceprovider.findByIdAndDelete(id)
     res.json({ message: "Serviceprovider Deleted  Success" })
 })
