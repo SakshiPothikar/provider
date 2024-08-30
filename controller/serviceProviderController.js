@@ -16,7 +16,7 @@ exports.updateProfile = asyncHandler(async (req, res) => {
         }
         if (req.file) {
             const newImage = await cloudinary.uploader.upload(req.file.path)
-            await Serviceprovider.findByIdAndUpdate({ ...req.body, image: newImage.secure_url })
+            await Serviceprovider.findByIdAndUpdate(req.params.id, { ...req.body, image: newImage.secure_url })
             res.json({ message: "service provider profile update success" })
         } else {
             await Serviceprovider.findByIdAndUpdate({ ...req.body })
