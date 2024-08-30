@@ -27,7 +27,7 @@ exports.updateProfile = asyncHandler(async (req, res) => {
 
 exports.deleteServiceProvider = asyncHandler(async (req, res) => {
     const { id } = req.params
-    const { isError, error } = checkEmpty({ id })
+    // const { isError, error } = checkEmpty({ id })
     // if (isError) {
     //     return res.status(400).json({ message: "All Feilds Required", error })
     // }
