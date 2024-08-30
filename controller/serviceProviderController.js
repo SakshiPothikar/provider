@@ -14,12 +14,16 @@ exports.updateProfile = asyncHandler(async (req, res) => {
         if (err) {
             return res.status(400).json({ message: "Multer Error" + err.message })
         }
+        console.log("---------------");
+        console.log(req.body)
+        console.log("---------------");
+
         if (req.file) {
             const newImage = await cloudinary.uploader.upload(req.file.path)
             await Serviceprovider.findByIdAndUpdate(req.params.id, { ...req.body, image: newImage.secure_url })
             res.json({ message: "service provider profile update success" })
         } else {
-            await Serviceprovider.findByIdAndUpdate({ ...req.body })
+            await Serviceprovider.findByIdAndUpdate(req.params.id, { ...req.body })
             res.json({ message: "service provider profile update success" })
         }
     })
